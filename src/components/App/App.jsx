@@ -2,16 +2,27 @@ import { Children, useState } from "react"
 import css from "./App.module.css"
 import Clicktracker from "../Clicktracker/ClickTraker";
 import Toggler from "../Toogler/Toogler";
+import Timer from "./Timer/Timer";
+
+const Modal = () => {
+    return <div>Modal</div>
+}
 
 export default function App() {
-    const [clicks, setClicks] = useState(0);
+    // const [clicks, setClicks] = useState(0);
  
-    const updateClicks = () => {
-        setClicks(clicks + 1);
-    }
+    // const updateClicks = () => {
+    //     setClicks(clicks + 1);
+    // }
 
-    const resetClicks = () => {
-        setClicks(0)
+    // const resetClicks = () => {
+    //     setClicks(0)
+    // }
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
     }
 
 
@@ -19,9 +30,13 @@ export default function App() {
         <div>
             <h1>State in react</h1>
 
-            <Clicktracker value={clicks} onUpdate={updateClicks}/>
-            <Clicktracker value={clicks} onUpdate={updateClicks} />
-            <button onClick={resetClicks}>Reset</button>
+            {/* <button onClick={toggle}>Toogle modal</button>
+            {isOpen && <Modal/>} */}
+
+            <Clicktracker />
+            <button onClick={toggle}>{isOpen ? 'Unmount' : "Mount"}</button>
+            {isOpen && <Timer/>}
+            {/* <button onClick={resetClicks}>Reset</button> */}
             {/* <hr />
             <Toggler>
                 <p>
